@@ -1,0 +1,60 @@
+<!-- 헤더 네비게이션 -->
+<header class="header">
+    <div class="container">
+        <div class="nav-wrapper">
+            <div class="logo" onclick="showPage('main')" style="cursor: pointer;">
+                <img src="logo.png" alt="씨익" class="logo-image">
+            </div>
+            
+            <!-- PC 네비게이션 -->
+            <nav class="nav-desktop">
+                <ul class="nav-list">
+                    <li><a href="#" onclick="showPage('main')">홈</a></li>
+                    <li><a href="#" onclick="showPage('product')">상품</a></li>
+                    <li><a href="#" onclick="showPage('3d')">지브로3D</a></li>
+                    <li><a href="#" onclick="showPage('modeling')">모델링</a></li>
+                    <li><a href="#" onclick="showPage('map')">와이드맵</a></li>
+                    <li><a href="#" onclick="showPage('ai')">AI 테스트</a></li>
+                    <li><a href="#" onclick="showPage('portfolio')">포트폴리오</a></li>
+                </ul>
+            </nav>
+            
+            <!-- 사용자 메뉴 -->
+            <div class="user-menu">
+                <div class="auth-buttons" id="authButtons">
+                    <button class="btn btn-outline" onclick="showPage('login')">로그인</button>
+                    <button class="btn btn-primary" onclick="showPage('signup')">회원가입</button>
+                </div>
+                <div class="user-info" id="userInfo" style="display: none;">
+                    <button class="btn btn-icon" onclick="showPage('messages')">
+                        <i class="fas fa-envelope"></i>
+                    </button>
+                    <button class="btn btn-icon" onclick="showPage('mypage')">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <button class="btn btn-outline" onclick="logout()">로그아웃</button>
+                </div>
+            </div>
+            
+            <!-- 모바일 햄버거 메뉴 -->
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- 모바일 네비게이션 -->
+    <nav class="nav-mobile" id="mobileNav">
+        <ul class="nav-list">
+            <li><a href="#" onclick="showPage('main')">홈</a></li>
+            <li><a href="#" onclick="showPage('product')">상품</a></li>
+            <li><a href="#" onclick="showPage('3d')">지브로3D</a></li>
+            <li><a href="#" onclick="showPage('modeling')">모델링</a></li>
+            <li><a href="#" onclick="showPage('map')">와이드맵</a></li>
+            <li><a href="#" onclick="showPage('ai')">AI 테스트</a></li>
+            <li><a href="#" onclick="showPage('portfolio')">포트폴리오</a></li>
+            <li><a href="#" onclick="showPage('mypage')">마이페이지</a></li>
+            <li><a href="#" onclick="showPage('messages')">쪽지</a></li>
+        </ul>
+    </nav>
+</header> 
