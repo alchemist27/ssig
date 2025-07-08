@@ -866,59 +866,14 @@ body {
     animation-delay: 5s;
 }
 
-.floating-triangle {
-    width: 0;
-    height: 0;
-    border-left: 16px solid transparent;
-    border-right: 16px solid transparent;
-    border-bottom: 28px solid var(--brand-orange);
-    animation: floatTriangle 7s ease-in-out infinite;
-    box-shadow: 0 6px 12px rgba(255, 107, 53, 0.15);
-    position: absolute;
-    opacity: 0.3;
-    z-index: 1;
-    pointer-events: none;
-}
 
-.floating-triangle-1 {
-    bottom: 35%;
-    right: 8%;
-    animation-delay: 2.5s;
-}
-
-.floating-triangle-2 {
-    top: 20%;
-    left: 12%;
-    animation: floatTriangle2 7s ease-in-out infinite;
-    animation-delay: 4.5s;
-}
-
-.floating-triangle-3 {
-    top: 60%;
-    right: 15%;
-    animation: floatTriangle3 7s ease-in-out infinite;
-    animation-delay: 1s;
-}
 
 @keyframes float {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
     50% { transform: translateY(-25px) rotate(180deg); }
 }
 
-@keyframes floatTriangle {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-25px) rotate(360deg); }
-}
 
-@keyframes floatTriangle2 {
-    0%, 100% { transform: translateY(0px) rotate(120deg); }
-    50% { transform: translateY(-25px) rotate(480deg); }
-}
-
-@keyframes floatTriangle3 {
-    0%, 100% { transform: translateY(0px) rotate(240deg); }
-    50% { transform: translateY(-25px) rotate(600deg); }
-}
 
 .hero-content {
     position: relative;
@@ -1813,11 +1768,7 @@ body {
         height: 20px;
     }
     
-    .floating-triangle {
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-bottom: 18px solid var(--brand-orange);
-    }
+
     
     .feature-grid {
         grid-template-columns: 1fr;
@@ -2026,11 +1977,7 @@ body {
         height: 18px;
     }
     
-    .floating-triangle {
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-bottom: 14px solid var(--brand-orange);
-    }
+
     
     .feature-card {
         padding: 20px;
