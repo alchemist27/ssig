@@ -406,16 +406,30 @@ function initScrollAnimations() {
                     
                     observer.unobserve(element);
                 }
+                
+                // 모바일 feature-card 애니메이션
+                if (element.classList.contains('feature-card') && window.innerWidth <= 768) {
+                    element.classList.add('animate-in');
+                    observer.unobserve(element);
+                }
             }
         });
     }, {
-        threshold: 0.5
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     });
     
     // 통계 숫자 요소들 관찰
     document.querySelectorAll('.stat-number').forEach(el => {
         observer.observe(el);
     });
+    
+    // 모바일에서 feature-card 요소들 관찰
+    if (window.innerWidth <= 768) {
+        document.querySelectorAll('.feature-card').forEach(el => {
+            observer.observe(el);
+        });
+    }
 }
 
 // 페이지 로드 시 초기화
