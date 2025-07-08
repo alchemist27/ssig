@@ -2,6 +2,14 @@
 <header class="header">
     <div class="container">
         <div class="nav-wrapper">
+            <!-- 모바일 햄버거 메뉴 (왼쪽) -->
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <!-- 로고 (가운데) -->
             <div class="logo" onclick="showPage('main')" style="cursor: pointer;">
                 <img src="logo.png" alt="씨익" class="logo-image">
             </div>
@@ -19,7 +27,7 @@
                 </ul>
             </nav>
             
-            <!-- 사용자 메뉴 -->
+            <!-- 사용자 메뉴 (오른쪽) -->
             <div class="user-menu">
                 <div class="auth-buttons" id="authButtons">
                     <button class="btn btn-outline" onclick="showPage('login')">로그인</button>
@@ -35,26 +43,39 @@
                     <button class="btn btn-outline" onclick="logout()">로그아웃</button>
                 </div>
             </div>
-            
-            <!-- 모바일 햄버거 메뉴 -->
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
         </div>
     </div>
     
     <!-- 모바일 네비게이션 -->
     <nav class="nav-mobile" id="mobileNav">
-        <ul class="nav-list">
-            <li><a href="#" onclick="showPage('main')">홈</a></li>
-            <li><a href="#" onclick="showPage('product')">상품</a></li>
-            <li><a href="#" onclick="showPage('3d')">지브로3D</a></li>
-            <li><a href="#" onclick="showPage('modeling')">모델링</a></li>
-            <li><a href="#" onclick="showPage('map')">와이드맵</a></li>
-            <li><a href="#" onclick="showPage('ai')">AI 테스트</a></li>
-            <li><a href="#" onclick="showPage('portfolio')">포트폴리오</a></li>
-            <li><a href="#" onclick="showPage('mypage')">마이페이지</a></li>
-            <li><a href="#" onclick="showPage('messages')">쪽지</a></li>
-        </ul>
+        <div class="nav-mobile-overlay" onclick="closeMobileMenu()"></div>
+        <div class="nav-mobile-content">
+            <div class="nav-mobile-header">
+                <div class="nav-mobile-logo">
+                    <img src="logo.png" alt="씨익" class="nav-mobile-logo-image">
+                    <span>씨익</span>
+                </div>
+                <button class="nav-mobile-close" onclick="closeMobileMenu()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="nav-list">
+                <li><a href="#" onclick="showPage('main')"><i class="fas fa-home"></i><span>홈</span></a></li>
+                <li><a href="#" onclick="showPage('product')"><i class="fas fa-shopping-bag"></i><span>상품</span></a></li>
+                <li><a href="#" onclick="showPage('3d')"><i class="fas fa-cube"></i><span>지브로3D</span></a></li>
+                <li><a href="#" onclick="showPage('modeling')"><i class="fas fa-drafting-compass"></i><span>모델링</span></a></li>
+                <li><a href="#" onclick="showPage('map')"><i class="fas fa-map-marker-alt"></i><span>와이드맵</span></a></li>
+                <li><a href="#" onclick="showPage('ai')"><i class="fas fa-robot"></i><span>AI 테스트</span></a></li>
+                <li><a href="#" onclick="showPage('portfolio')"><i class="fas fa-briefcase"></i><span>포트폴리오</span></a></li>
+                <li><a href="#" onclick="showPage('mypage')"><i class="fas fa-user"></i><span>마이페이지</span></a></li>
+                <li><a href="#" onclick="showPage('messages')"><i class="fas fa-envelope"></i><span>쪽지</span></a></li>
+            </ul>
+            <div class="nav-mobile-footer">
+                <div class="nav-mobile-auth">
+                    <button class="btn btn-outline" onclick="showPage('login')">로그인</button>
+                    <button class="btn btn-primary" onclick="showPage('signup')">회원가입</button>
+                </div>
+            </div>
+        </div>
     </nav>
 </header> 

@@ -25,7 +25,7 @@ function showPage(pageId) {
     if (pageId === 'main') {
         setTimeout(() => {
             // 통계 숫자 초기화
-            document.querySelectorAll('.stat-number').forEach(el => {
+            document.querySelectorAll('.stat-count').forEach(el => {
                 el.textContent = '0';
             });
             // 애니메이션 재시작
@@ -56,13 +56,27 @@ function showPage(pageId) {
 // 모바일 메뉴 토글
 function toggleMobileMenu() {
     const mobileNav = document.getElementById('mobileNav');
+    const toggleButton = document.querySelector('.mobile-menu-toggle');
+    
     mobileNav.classList.toggle('active');
+    toggleButton.classList.toggle('active');
+    
+    // 스크롤 방지/허용
+    if (mobileNav.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
 }
 
 // 모바일 메뉴 닫기
 function closeMobileMenu() {
     const mobileNav = document.getElementById('mobileNav');
+    const toggleButton = document.querySelector('.mobile-menu-toggle');
+    
     mobileNav.classList.remove('active');
+    toggleButton.classList.remove('active');
+    document.body.style.overflow = '';
 }
 
 // 회원가입 폼 표시
@@ -353,6 +367,9 @@ async function loadComponent(elementId, componentPath) {
 
 // 카운팅 애니메이션 함수
 function animateCounter(element, target, duration = 2000) {
+    const countElement = element.querySelector('.stat-count');
+    if (!countElement) return;
+    
     const start = 0;
     const increment = target / (duration / 16);
     let current = start;
@@ -364,18 +381,14 @@ function animateCounter(element, target, duration = 2000) {
             clearInterval(timer);
         }
         
-        // 숫자 포맷팅
+        // 숫자 포맷팅 (숫자 부분만)
         let displayValue = Math.floor(current);
         if (target >= 1000) {
             displayValue = displayValue.toLocaleString('ko-KR');
         }
         
-        // + 기호 추가
-        if (element.dataset.suffix) {
-            displayValue += element.dataset.suffix;
-        }
-        
-        element.textContent = displayValue;
+        // 숫자 부분만 업데이트 (+ 기호는 고정)
+        countElement.textContent = displayValue;
     }, 16);
 }
 
@@ -388,11 +401,7 @@ function initScrollAnimations() {
                 
                 // 통계 숫자 애니메이션
                 if (element.classList.contains('stat-number')) {
-                    const targetText = element.dataset.number;
-                    const targetNumber = parseInt(targetText.replace(/[^\d]/g, ''));
-                    const suffix = targetText.replace(/[\d,]/g, '');
-                    
-                    element.dataset.suffix = suffix;
+                    const targetNumber = parseInt(element.dataset.number);
                     animateCounter(element, targetNumber, 2000);
                     
                     observer.unobserve(element);
