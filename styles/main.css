@@ -573,6 +573,7 @@ body {
     right: 0;
     bottom: 0;
     z-index: 1;
+    overflow: hidden;
 }
 
 .hero-pattern {
@@ -606,6 +607,8 @@ body {
 .floating-cube, .floating-circle {
     position: absolute;
     opacity: 0.6;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .floating-cube {
@@ -614,43 +617,45 @@ body {
     background: linear-gradient(45deg, var(--brand-orange), var(--brand-blue));
     border-radius: 4px;
     animation: float 6s ease-in-out infinite;
+    box-shadow: 0 4px 8px rgba(255, 107, 53, 0.3);
 }
 
 .floating-cube-1 {
-    top: 20%;
-    left: 10%;
+    top: 15%;
+    left: 8%;
     animation-delay: 0s;
 }
 
 .floating-cube-2 {
-    top: 60%;
-    right: 15%;
+    top: 65%;
+    right: 12%;
     animation-delay: 2s;
 }
 
 .floating-cube-3 {
-    bottom: 30%;
-    left: 20%;
+    bottom: 25%;
+    left: 15%;
     animation-delay: 4s;
 }
 
 .floating-circle {
     width: 30px;
     height: 30px;
-    border: 2px solid var(--brand-orange);
+    border: 3px solid var(--brand-orange);
     border-radius: 50%;
     animation: float 8s ease-in-out infinite;
+    box-shadow: 0 4px 8px rgba(255, 107, 53, 0.2);
 }
 
 .floating-circle-1 {
-    top: 15%;
-    right: 20%;
+    top: 25%;
+    right: 18%;
     animation-delay: 1s;
 }
 
 .floating-circle-2 {
-    bottom: 20%;
-    right: 30%;
+    bottom: 15%;
+    right: 25%;
     animation-delay: 3s;
 }
 

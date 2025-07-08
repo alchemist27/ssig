@@ -21,6 +21,18 @@ function showPage(pageId) {
     // 모바일 메뉴 닫기
     closeMobileMenu();
     
+    // 메인 페이지로 돌아올 때 애니메이션 재초기화
+    if (pageId === 'main') {
+        setTimeout(() => {
+            // 통계 숫자 초기화
+            document.querySelectorAll('.stat-number').forEach(el => {
+                el.textContent = '0';
+            });
+            // 애니메이션 재시작
+            initScrollAnimations();
+        }, 100);
+    }
+    
     // 페이지별 특별 처리
     switch(pageId) {
         case 'admin':
@@ -339,6 +351,64 @@ async function loadComponent(elementId, componentPath) {
     }
 }
 
+// 카운팅 애니메이션 함수
+function animateCounter(element, target, duration = 2000) {
+    const start = 0;
+    const increment = target / (duration / 16);
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        
+        // 숫자 포맷팅
+        let displayValue = Math.floor(current);
+        if (target >= 1000) {
+            displayValue = displayValue.toLocaleString('ko-KR');
+        }
+        
+        // + 기호 추가
+        if (element.dataset.suffix) {
+            displayValue += element.dataset.suffix;
+        }
+        
+        element.textContent = displayValue;
+    }, 16);
+}
+
+// Intersection Observer를 사용한 스크롤 애니메이션
+function initScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                
+                // 통계 숫자 애니메이션
+                if (element.classList.contains('stat-number')) {
+                    const targetText = element.dataset.number;
+                    const targetNumber = parseInt(targetText.replace(/[^\d]/g, ''));
+                    const suffix = targetText.replace(/[\d,]/g, '');
+                    
+                    element.dataset.suffix = suffix;
+                    animateCounter(element, targetNumber, 2000);
+                    
+                    observer.unobserve(element);
+                }
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+    
+    // 통계 숫자 요소들 관찰
+    document.querySelectorAll('.stat-number').forEach(el => {
+        observer.observe(el);
+    });
+}
+
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', async function() {
     // 공통 컴포넌트 로드
@@ -347,6 +417,11 @@ document.addEventListener('DOMContentLoaded', async function() {
     
     // 기본 페이지 표시
     showPage('main');
+    
+    // 스크롤 애니메이션 초기화
+    setTimeout(() => {
+        initScrollAnimations();
+    }, 500);
     
     // 터치 이벤트 리스너 추가 (모바일)
     if ('ontouchstart' in window) {
