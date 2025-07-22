@@ -131,6 +131,17 @@
             await loadComponent('header-container', 'components/header.html');
             await loadComponent('footer-container', 'components/footer.html');
             
+            // 헤더 스티키 설정 강화
+            setTimeout(() => {
+                const header = document.querySelector('.header');
+                if (header) {
+                    header.style.position = 'sticky';
+                    header.style.top = '0';
+                    header.style.zIndex = '1001';
+                    header.style.width = '100%';
+                }
+            }, 50);
+            
             // 헤더 스크롤 효과 이벤트 리스너 추가
             window.addEventListener('scroll', handleHeaderScroll);
             

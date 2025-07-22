@@ -324,7 +324,14 @@ function initScrollAnimations() {
 // 헤더 스크롤 효과
 function handleHeaderScroll() {
     const header = document.querySelector('.header');
+    if (!header) return;
+    
     const scrollY = window.scrollY;
+    
+    // 헤더 스티키 위치 강제 설정 (CSS가 덮어씌워진 경우 대비)
+    header.style.position = 'sticky';
+    header.style.top = '0';
+    header.style.zIndex = '1001';
     
     if (scrollY > 10) {
         header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
@@ -425,11 +432,22 @@ document.addEventListener('DOMContentLoaded', async function() {
         updateAuthUI();
     }
     
-    // 헤더 스크롤 효과 이벤트 리스너 추가
-    window.addEventListener('scroll', handleHeaderScroll);
-    
-    // 초기 헤더 상태 설정
-    handleHeaderScroll();
+                // 헤더 스티키 설정 강화
+            setTimeout(() => {
+                const header = document.querySelector('.header');
+                if (header) {
+                    header.style.position = 'sticky';
+                    header.style.top = '0';
+                    header.style.zIndex = '1001';
+                    header.style.width = '100%';
+                }
+            }, 50);
+            
+            // 헤더 스크롤 효과 이벤트 리스너 추가
+            window.addEventListener('scroll', handleHeaderScroll);
+            
+            // 초기 헤더 상태 설정
+            handleHeaderScroll();
 });
 
 // 윈도우 리사이즈 이벤트
