@@ -18,23 +18,102 @@
             <div class="container">
                 <div class="auth-container">
                     <h2>로그인</h2>
-                    <div class="social-login">
-                        <button class="btn btn-social google">
-                            <i class="fab fa-google"></i>
-                            구글로 로그인
+                    
+                    <!-- 탭 메뉴 -->
+                    <div class="login-tabs">
+                        <button class="login-tab active" onclick="switchLoginTab('general')">
+                            <i class="fas fa-user"></i>
+                            일반 사용자
                         </button>
-                        <button class="btn btn-social kakao">
-                            <i class="fas fa-comment"></i>
-                            카카오로 로그인
+                        <button class="login-tab" onclick="switchLoginTab('business')">
+                            <i class="fas fa-building"></i>
+                            입점업체
                         </button>
-                        <button class="btn btn-social naver">
-                            <i class="fab fa-naver"></i>
-                            네이버로 로그인
+                        <button class="login-tab" onclick="switchLoginTab('admin')">
+                            <i class="fas fa-shield-alt"></i>
+                            관리자
                         </button>
                     </div>
-                    <p class="auth-link">
-                        계정이 없으신가요? <a href="signup.html">회원가입</a>
-                    </p>
+
+                    <!-- 일반 사용자 로그인 -->
+                    <div id="general-login" class="login-tab-content active">
+                        <div class="social-login">
+                            <button class="btn btn-social google" onclick="handleSocialLogin('google', 'general')">
+                                <i class="fab fa-google"></i>
+                                구글로 로그인
+                            </button>
+                            <button class="btn btn-social kakao" onclick="handleSocialLogin('kakao', 'general')">
+                                <i class="fas fa-comment"></i>
+                                카카오로 로그인
+                            </button>
+                            <button class="btn btn-social naver" onclick="handleSocialLogin('naver', 'general')">
+                                <i class="fab fa-naver"></i>
+                                네이버로 로그인
+                            </button>
+                        </div>
+                        <div class="divider">또는</div>
+                        <form class="login-form" onsubmit="handleLogin(event, 'general')">
+                            <div class="form-group">
+                                <input type="email" placeholder="이메일" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="비밀번호" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">로그인</button>
+                        </form>
+                        <p class="auth-link">
+                            계정이 없으신가요? <a href="signup.html">회원가입</a>
+                        </p>
+                    </div>
+
+                    <!-- 입점업체 로그인 -->
+                    <div id="business-login" class="login-tab-content">
+                        <div class="business-login-info">
+                            <div class="info-box">
+                                <i class="fas fa-info-circle"></i>
+                                <span>입점업체는 승인된 사업자만 로그인할 수 있습니다.</span>
+                            </div>
+                        </div>
+                        <form class="login-form" onsubmit="handleLogin(event, 'business')">
+                            <div class="form-group">
+                                <input type="text" placeholder="사업자 등록번호" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="사업자 이메일" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="비밀번호" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">입점업체 로그인</button>
+                        </form>
+                        <div class="business-links">
+                            <a href="#" class="link">입점 신청하기</a>
+                            <span class="divider-text">|</span>
+                            <a href="#" class="link">비밀번호 찾기</a>
+                        </div>
+                    </div>
+
+                    <!-- 관리자 로그인 -->
+                    <div id="admin-login" class="login-tab-content">
+                        <div class="admin-login-info">
+                            <div class="info-box warning">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>관리자 계정으로만 접근 가능합니다.</span>
+                            </div>
+                        </div>
+                        <form class="login-form" onsubmit="handleLogin(event, 'admin')">
+                            <div class="form-group">
+                                <input type="text" name="adminId" placeholder="관리자 ID" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="adminPassword" placeholder="관리자 비밀번호" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">관리자 로그인</button>
+                        </form>
+                        <div class="admin-links">
+                            <a href="#" class="link">관리자 계정 문의</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -43,6 +122,137 @@
     <!-- 푸터 컨테이너 -->
     <div id="footer-container"></div>
 
+    <script src="scripts/main.js"></script>
     <script src="scripts/auth.js"></script>
+    <script>
+        // 탭 전환 함수
+        function switchLoginTab(tabType) {
+            // 모든 탭 비활성화
+            document.querySelectorAll('.login-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // 모든 탭 콘텐츠 숨기기
+            document.querySelectorAll('.login-tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // 선택된 탭 활성화
+            event.target.closest('.login-tab').classList.add('active');
+            document.getElementById(`${tabType}-login`).classList.add('active');
+        }
+
+        // 로그인 처리 함수
+        function handleLogin(event, userType) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            console.log(`${userType} 로그인 시도`);
+            
+            if (userType === 'admin') {
+                // 관리자 로그인 처리
+                const adminId = formData.get('adminId');
+                const adminPassword = formData.get('adminPassword');
+                
+                // 임시 관리자 계정 확인
+                if (adminId === 'admin' && adminPassword === 'admin123') {
+                    showNotification('관리자 로그인 성공! 관리자 페이지로 이동합니다.', 'success');
+                    
+                    // 2초 후 관리자 페이지로 이동
+                    setTimeout(() => {
+                        window.location.href = 'admin.html';
+                    }, 2000);
+                } else {
+                    showNotification('관리자 ID 또는 비밀번호가 올바르지 않습니다.', 'error');
+                }
+            } else {
+                // 일반 사용자 및 입점업체 로그인 (기존 로직)
+                showNotification(`${userType} 로그인 기능 준비 중입니다.`, 'info');
+            }
+        }
+
+        // 소셜 로그인 처리 (기존 함수 확장)
+        function handleSocialLogin(provider, userType) {
+            console.log(`${provider} ${userType} 로그인 시도`);
+            showNotification(`${provider} ${userType} 로그인 기능 준비 중입니다.`, 'info');
+        }
+
+        // 알림 함수
+        function showNotification(message, type) {
+            // 기존 알림이 있으면 제거
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            // 새 알림 생성
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.textContent = message;
+            
+            // 스타일 적용
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 16px 20px;
+                border-radius: 8px;
+                color: white;
+                font-weight: 500;
+                z-index: 10000;
+                max-width: 400px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                animation: slideIn 0.3s ease;
+                ${type === 'success' ? 'background-color: #4a90e2;' : 
+                  type === 'error' ? 'background-color: #ff4757;' : 
+                  'background-color: #666;'}
+            `;
+            
+            // CSS 애니메이션 추가
+            if (!document.querySelector('#notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes slideIn {
+                        from {
+                            transform: translateX(100%);
+                            opacity: 0;
+                        }
+                        to {
+                            transform: translateX(0);
+                            opacity: 1;
+                        }
+                    }
+                    @keyframes slideOut {
+                        from {
+                            transform: translateX(0);
+                            opacity: 1;
+                        }
+                        to {
+                            transform: translateX(100%);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // DOM에 추가
+            document.body.appendChild(notification);
+            
+            // 3초 후 자동 제거
+            setTimeout(() => {
+                if (notification && notification.parentNode) {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => {
+                        if (notification && notification.parentNode) {
+                            notification.remove();
+                        }
+                    }, 300);
+                }
+            }, 3000);
+        }
+    </script>
 </body>
 </html> 

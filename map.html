@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>와이드맵 - 씨익 웹플랫폼</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 헤더 컨테이너 -->
+    <div id="header-container"></div>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+        <!-- 와이드맵 페이지 -->
+        <div id="map" class="page active">
+            <div class="container">
+                <div class="page-header">
+                    <h2>와이드맵</h2>
+                    <div class="page-controls">
+                        <input type="text" placeholder="주소 또는 업체명 검색..." class="search-input">
+                        <button class="btn btn-primary">검색</button>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <div class="map-viewer">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>지도 서비스</h3>
+                            <p>구글맵 API 연동 예정</p>
+                        </div>
+                    </div>
+                    <div class="map-sidebar">
+                        <div class="map-filters">
+                            <h4>필터</h4>
+                            <div class="filter-group">
+                                <label>업체 유형</label>
+                                <select class="filter-select">
+                                    <option value="all">전체</option>
+                                    <option value="furniture">가구점</option>
+                                    <option value="construction">시공업체</option>
+                                    <option value="design">디자인업체</option>
+                                    <option value="materials">자재업체</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label>거리</label>
+                                <select class="filter-select">
+                                    <option value="1km">1km 이내</option>
+                                    <option value="3km">3km 이내</option>
+                                    <option value="5km">5km 이내</option>
+                                    <option value="10km">10km 이내</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="search-results">
+                            <h4>검색 결과</h4>
+                            <div class="result-item">
+                                <div class="result-info">
+                                    <h5>모던 퍼니처</h5>
+                                    <p class="result-address">서울시 강남구 테헤란로 123</p>
+                                    <p class="result-distance">거리: 500m</p>
+                                    <div class="result-rating">
+                                        <span class="stars">★★★★☆</span>
+                                        <span class="rating-text">4.2 (128개 리뷰)</span>
+                                    </div>
+                                </div>
+                                <div class="result-actions">
+                                    <button class="btn btn-outline btn-small">상세보기</button>
+                                    <button class="btn btn-primary btn-small">연락하기</button>
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-info">
+                                    <h5>씨앤씨 인테리어</h5>
+                                    <p class="result-address">서울시 강남구 역삼로 456</p>
+                                    <p class="result-distance">거리: 800m</p>
+                                    <div class="result-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span class="rating-text">4.8 (89개 리뷰)</span>
+                                    </div>
+                                </div>
+                                <div class="result-actions">
+                                    <button class="btn btn-outline btn-small">상세보기</button>
+                                    <button class="btn btn-primary btn-small">연락하기</button>
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-info">
+                                    <h5>럭셔리 조명</h5>
+                                    <p class="result-address">서울시 서초구 서초대로 789</p>
+                                    <p class="result-distance">거리: 1.2km</p>
+                                    <div class="result-rating">
+                                        <span class="stars">★★★★☆</span>
+                                        <span class="rating-text">4.0 (76개 리뷰)</span>
+                                    </div>
+                                </div>
+                                <div class="result-actions">
+                                    <button class="btn btn-outline btn-small">상세보기</button>
+                                    <button class="btn btn-primary btn-small">연락하기</button>
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-info">
+                                    <h5>프리미엄 건설</h5>
+                                    <p class="result-address">서울시 강남구 논현로 321</p>
+                                    <p class="result-distance">거리: 1.5km</p>
+                                    <div class="result-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span class="rating-text">4.7 (156개 리뷰)</span>
+                                    </div>
+                                </div>
+                                <div class="result-actions">
+                                    <button class="btn btn-outline btn-small">상세보기</button>
+                                    <button class="btn btn-primary btn-small">연락하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 푸터 컨테이너 -->
+    <div id="footer-container"></div>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html> 

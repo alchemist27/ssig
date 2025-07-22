@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 - 씨익 웹플랫폼</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 헤더 컨테이너 -->
+    <div id="header-container"></div>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+        <!-- 상품페이지 -->
+        <div id="product" class="page active">
+            <div class="container">
+                <div class="page-header">
+                    <h2>상품</h2>
+                    <div class="page-controls">
+                        <select class="sort-select">
+                            <option value="distance">거리순</option>
+                            <option value="price">가격순</option>
+                            <option value="latest">최신순</option>
+                        </select>
+                        <button class="btn btn-primary">상품 등록</button>
+                    </div>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-info">
+                            <h3>모던 소파</h3>
+                            <p class="price">₩1,200,000</p>
+                            <p class="distance">거리: 1km</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-info">
+                            <h3>LED 조명</h3>
+                            <p class="price">₩150,000</p>
+                            <p class="distance">거리: 2km</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-info">
+                            <h3>원목 테이블</h3>
+                            <p class="price">₩800,000</p>
+                            <p class="distance">거리: 1.5km</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-info">
+                            <h3>스탠딩 데스크</h3>
+                            <p class="price">₩450,000</p>
+                            <p class="distance">거리: 3km</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-info">
+                            <h3>책장</h3>
+                            <p class="price">₩320,000</p>
+                            <p class="distance">거리: 2.5km</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-info">
+                            <h3>화분</h3>
+                            <p class="price">₩85,000</p>
+                            <p class="distance">거리: 1km</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 푸터 컨테이너 -->
+    <div id="footer-container"></div>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html> 

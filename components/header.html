@@ -10,35 +10,35 @@
             </button>
             
             <!-- 로고 (가운데) -->
-            <div class="logo" onclick="showPage('main')" style="cursor: pointer;">
+            <a href="index.html" class="logo">
                 <img src="logo.png" alt="씨익" class="logo-image">
-            </div>
+            </a>
             
             <!-- PC 네비게이션 -->
             <nav class="nav-desktop">
                 <ul class="nav-list">
-                    <li><a href="#" onclick="showPage('product')">상품</a></li>
-                    <li><a href="#" onclick="showPage('3d')">지브로3D</a></li>
-                    <li><a href="#" onclick="showPage('modeling')">모델링</a></li>
-                    <li><a href="#" onclick="showPage('map')">와이드맵</a></li>
-                    <li><a href="#" onclick="showPage('ai')">AI 테스트</a></li>
-                    <li><a href="#" onclick="showPage('portfolio')">포트폴리오</a></li>
+                    <li><a href="product.html">상품</a></li>
+                    <li><a href="3d-library.html">지브로3D</a></li>
+                    <li><a href="modeling.html">모델링</a></li>
+                    <li><a href="map.html">와이드맵</a></li>
+                    <li><a href="ai-test.html">AI 테스트</a></li>
+                    <li><a href="portfolio.html">포트폴리오</a></li>
                 </ul>
             </nav>
             
             <!-- 사용자 메뉴 (오른쪽) -->
             <div class="user-menu">
                 <div class="auth-buttons" id="authButtons">
-                    <button class="btn btn-outline" onclick="showPage('login')">로그인</button>
-                    <button class="btn btn-primary" onclick="showPage('signup')">회원가입</button>
+                    <a href="login.html" class="btn btn-outline">로그인</a>
+                    <a href="signup.html" class="btn btn-primary">회원가입</a>
                 </div>
                 <div class="user-info" id="userInfo" style="display: none;">
-                    <button class="btn btn-icon" onclick="showPage('messages')">
+                    <a href="messages.html" class="btn btn-icon">
                         <i class="fas fa-envelope"></i>
-                    </button>
-                    <button class="btn btn-icon" onclick="showPage('mypage')">
+                    </a>
+                    <a href="mypage.html" class="btn btn-icon">
                         <i class="fas fa-user"></i>
-                    </button>
+                    </a>
                     <button class="btn btn-outline" onclick="logout()">로그아웃</button>
                 </div>
             </div>
@@ -59,19 +59,19 @@
                 </button>
             </div>
             <ul class="nav-list">
-                <li><a href="#" onclick="showPage('product')"><i class="fas fa-shopping-bag"></i><span>상품</span></a></li>
-                <li><a href="#" onclick="showPage('3d')"><i class="fas fa-cube"></i><span>지브로3D</span></a></li>
-                <li><a href="#" onclick="showPage('modeling')"><i class="fas fa-drafting-compass"></i><span>모델링</span></a></li>
-                <li><a href="#" onclick="showPage('map')"><i class="fas fa-map-marker-alt"></i><span>와이드맵</span></a></li>
-                <li><a href="#" onclick="showPage('ai')"><i class="fas fa-robot"></i><span>AI 테스트</span></a></li>
-                <li><a href="#" onclick="showPage('portfolio')"><i class="fas fa-briefcase"></i><span>포트폴리오</span></a></li>
-                <li><a href="#" onclick="showPage('mypage')"><i class="fas fa-user"></i><span>마이페이지</span></a></li>
-                <li><a href="#" onclick="showPage('messages')"><i class="fas fa-envelope"></i><span>쪽지</span></a></li>
+                <li><a href="product.html"><i class="fas fa-shopping-bag"></i><span>상품</span></a></li>
+                <li><a href="3d-library.html"><i class="fas fa-cube"></i><span>지브로3D</span></a></li>
+                <li><a href="modeling.html"><i class="fas fa-drafting-compass"></i><span>모델링</span></a></li>
+                <li><a href="map.html"><i class="fas fa-map-marker-alt"></i><span>와이드맵</span></a></li>
+                <li><a href="ai-test.html"><i class="fas fa-robot"></i><span>AI 테스트</span></a></li>
+                <li><a href="portfolio.html"><i class="fas fa-briefcase"></i><span>포트폴리오</span></a></li>
+                <li><a href="mypage.html"><i class="fas fa-user"></i><span>마이페이지</span></a></li>
+                <li><a href="messages.html"><i class="fas fa-envelope"></i><span>쪽지</span></a></li>
             </ul>
             <div class="nav-mobile-footer">
                 <div class="nav-mobile-auth">
-                    <button class="btn btn-outline" onclick="showPage('login')">로그인</button>
-                    <button class="btn btn-primary" onclick="showPage('signup')">회원가입</button>
+                    <a href="login.html" class="btn btn-outline">로그인</a>
+                    <a href="signup.html" class="btn btn-primary">회원가입</a>
                 </div>
             </div>
         </div>

@@ -33,6 +33,14 @@ function showPage(pageId) {
     
     // 페이지별 특별 처리
     switch(pageId) {
+        case 'login':
+            // 로그인 페이지로 리다이렉트
+            window.location.href = 'login.html';
+            return;
+        case 'signup':
+            // 회원가입 페이지로 리다이렉트
+            window.location.href = 'signup.html';
+            return;
         case 'admin':
         case 'mypage':
         case 'messages':
@@ -309,6 +317,20 @@ function initScrollAnimations() {
     }
 }
 
+// 헤더 스크롤 효과
+function handleHeaderScroll() {
+    const header = document.querySelector('.header');
+    const scrollY = window.scrollY;
+    
+    if (scrollY > 10) {
+        header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+        header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+    } else {
+        header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+        header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+    }
+}
+
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', async function() {
     // 공통 컴포넌트 로드
@@ -378,6 +400,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (typeof updateAuthUI === 'function') {
         updateAuthUI();
     }
+    
+    // 헤더 스크롤 효과 이벤트 리스너 추가
+    window.addEventListener('scroll', handleHeaderScroll);
+    
+    // 초기 헤더 상태 설정
+    handleHeaderScroll();
 });
 
 // 윈도우 리사이즈 이벤트

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모델링 견적 - 씨익 웹플랫폼</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 헤더 컨테이너 -->
+    <div id="header-container"></div>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+        <!-- 모델링 페이지 -->
+        <div id="modeling" class="page active">
+            <div class="container">
+                <div class="page-header">
+                    <h2>모델링 견적</h2>
+                    <div class="page-controls">
+                        <button class="btn btn-outline">불러오기</button>
+                        <button class="btn btn-primary">내보내기</button>
+                    </div>
+                </div>
+                <div class="modeling-editor">
+                    <div class="editor-toolbar">
+                        <button class="btn btn-icon" onclick="addModelingRow()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button class="btn btn-icon" onclick="removeModelingRow()">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button class="btn btn-icon" onclick="copyModelingRow()">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <button class="btn btn-outline">템플릿</button>
+                    </div>
+                    <div class="editor-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="5%">선택</th>
+                                    <th width="40%">항목</th>
+                                    <th width="15%">수량</th>
+                                    <th width="20%">단가</th>
+                                    <th width="20%">금액</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>
+                                        <input type="text" value="모던 소파" class="table-input">
+                                    </td>
+                                    <td>
+                                        <input type="number" value="1" class="table-input" min="1">
+                                    </td>
+                                    <td>
+                                        <input type="number" value="1200000" class="table-input">
+                                    </td>
+                                    <td class="calculated-price">₩1,200,000</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>
+                                        <input type="text" value="LED 조명" class="table-input">
+                                    </td>
+                                    <td>
+                                        <input type="number" value="3" class="table-input" min="1">
+                                    </td>
+                                    <td>
+                                        <input type="number" value="150000" class="table-input">
+                                    </td>
+                                    <td class="calculated-price">₩450,000</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>
+                                        <input type="text" value="원목 테이블" class="table-input">
+                                    </td>
+                                    <td>
+                                        <input type="number" value="1" class="table-input" min="1">
+                                    </td>
+                                    <td>
+                                        <input type="number" value="800000" class="table-input">
+                                    </td>
+                                    <td class="calculated-price">₩800,000</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>
+                                        <input type="text" value="시공비" class="table-input">
+                                    </td>
+                                    <td>
+                                        <input type="number" value="1" class="table-input" min="1">
+                                    </td>
+                                    <td>
+                                        <input type="number" value="500000" class="table-input">
+                                    </td>
+                                    <td class="calculated-price">₩500,000</td>
+                                </tr>
+                                <tr class="total-row">
+                                    <td colspan="4" class="total-label"><strong>총 합계</strong></td>
+                                    <td class="total-price"><strong>₩2,950,000</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modeling-summary">
+                    <div class="summary-card">
+                        <h3>프로젝트 요약</h3>
+                        <div class="summary-item">
+                            <span class="summary-label">총 항목 수:</span>
+                            <span class="summary-value">4개</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">예상 기간:</span>
+                            <span class="summary-value">2-3주</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">총 비용:</span>
+                            <span class="summary-value total-amount">₩2,950,000</span>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-outline">임시저장</button>
+                        <button class="btn btn-secondary">PDF 다운로드</button>
+                        <button class="btn btn-primary">견적서 전송</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 푸터 컨테이너 -->
+    <div id="footer-container"></div>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html> 

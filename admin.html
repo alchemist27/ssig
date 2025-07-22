@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지 - 씨익 웹플랫폼</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 헤더 컨테이너 -->
+    <div id="header-container"></div>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+        <!-- 관리자 페이지 -->
+        <div id="admin" class="page active">
+            <div class="container">
+                <div class="page-header">
+                    <h2>관리자 페이지</h2>
+                </div>
+                <div class="admin-dashboard">
+                    <div class="admin-menu">
+                        <div class="admin-menu-item active" onclick="showAdminTab('products')">
+                            <i class="fas fa-box"></i>
+                            <span>상품 관리</span>
+                        </div>
+                        <div class="admin-menu-item" onclick="showAdminTab('projects')">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>프로젝트 관리</span>
+                        </div>
+                        <div class="admin-menu-item" onclick="showAdminTab('library')">
+                            <i class="fas fa-database"></i>
+                            <span>라이브러리 관리</span>
+                        </div>
+                        <div class="admin-menu-item" onclick="showAdminTab('categories')">
+                            <i class="fas fa-tags"></i>
+                            <span>카테고리 관리</span>
+                        </div>
+                        <div class="admin-menu-item" onclick="showAdminTab('ads')">
+                            <i class="fas fa-ad"></i>
+                            <span>광고 관리</span>
+                        </div>
+                        <div class="admin-menu-item" onclick="showAdminTab('payments')">
+                            <i class="fas fa-credit-card"></i>
+                            <span>결제 내역</span>
+                        </div>
+                        <div class="admin-menu-item" onclick="showAdminTab('members')">
+                            <i class="fas fa-users"></i>
+                            <span>회원 관리</span>
+                        </div>
+                    </div>
+                    <div class="admin-content">
+                        <div id="adminProducts" class="admin-tab-content active">
+                            <h3>상품 관리</h3>
+                            <p>라이브러리 연결 유무 구분 및 상품 관리</p>
+                            <div class="admin-stats">
+                                <div class="stat-box">
+                                    <h4>총 상품 수</h4>
+                                    <span class="stat-number">1,234</span>
+                                </div>
+                                <div class="stat-box">
+                                    <h4>라이브러리 연결</h4>
+                                    <span class="stat-number">856</span>
+                                </div>
+                                <div class="stat-box">
+                                    <h4>대기중</h4>
+                                    <span class="stat-number">45</span>
+                                </div>
+                            </div>
+                            <div class="admin-actions">
+                                <button class="btn btn-primary">새 상품 추가</button>
+                                <button class="btn btn-outline">일괄 처리</button>
+                            </div>
+                        </div>
+                        <div id="adminProjects" class="admin-tab-content">
+                            <h3>프로젝트 관리</h3>
+                            <p>진행율, 클라이언트 확인 등 프로젝트 워크플로우 관리</p>
+                            <div class="admin-stats">
+                                <div class="stat-box">
+                                    <h4>진행중 프로젝트</h4>
+                                    <span class="stat-number">89</span>
+                                </div>
+                                <div class="stat-box">
+                                    <h4>완료 프로젝트</h4>
+                                    <span class="stat-number">267</span>
+                                </div>
+                                <div class="stat-box">
+                                    <h4>대기중</h4>
+                                    <span class="stat-number">23</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="adminLibrary" class="admin-tab-content">
+                            <h3>라이브러리 관리</h3>
+                            <p>상품 연결 여부 구분</p>
+                            <div class="admin-stats">
+                                <div class="stat-box">
+                                    <h4>총 3D 모델</h4>
+                                    <span class="stat-number">1,567</span>
+                                </div>
+                                <div class="stat-box">
+                                    <h4>상품 연결됨</h4>
+                                    <span class="stat-number">934</span>
+                                </div>
+                                <div class="stat-box">
+                                    <h4>미연결</h4>
+                                    <span class="stat-number">633</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="adminCategories" class="admin-tab-content">
+                            <h3>카테고리 관리</h3>
+                            <p>모델링과 상품 카테고리 통일</p>
+                            <div class="category-management">
+                                <div class="category-list">
+                                    <div class="category-item">
+                                        <span>가구</span>
+                                        <span class="item-count">456개</span>
+                                    </div>
+                                    <div class="category-item">
+                                        <span>조명</span>
+                                        <span class="item-count">234개</span>
+                                    </div>
+                                    <div class="category-item">
+                                        <span>장식품</span>
+                                        <span class="item-count">189개</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="adminAds" class="admin-tab-content">
+                            <h3>광고 관리</h3>
+                            <p>배너, 스폰서 콘텐츠, 위치 지정</p>
+                            <div class="admin-stats">
+                                <div class="stat-box">
+                                    <h4>활성 광고</h4>
+                                    <span class="stat-number">12</span>
+                                </div>
+                                <div class="stat-box">
+                                    <h4>이번달 수익</h4>
+                                    <span class="stat-number">₩2.5M</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="adminPayments" class="admin-tab-content">
+                            <h3>결제 내역</h3>
+                            <p>결제 상태, 수익 정산 추적</p>
+                            <div class="admin-stats">
+                                <div class="stat-box">
+                                    <h4>이번달 총 결제</h4>
+                                    <span class="stat-number">₩45.2M</span>
+                                </div>
+                                <div class="stat-box">
+                                    <h4>수수료 수익</h4>
+                                    <span class="stat-number">₩4.1M</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="adminMembers" class="admin-tab-content">
+                            <h3>회원 관리</h3>
+                            <p>회원별 커미션 정보 관리</p>
+                            <div class="admin-stats">
+                                <div class="stat-box">
+                                    <h4>총 회원 수</h4>
+                                    <span class="stat-number">2,456</span>
+                                </div>
+                                <div class="stat-box">
+                                    <h4>디자이너</h4>
+                                    <span class="stat-number">567</span>
+                                </div>
+                                <div class="stat-box">
+                                    <h4>업체</h4>
+                                    <span class="stat-number">234</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 푸터 컨테이너 -->
+    <div id="footer-container"></div>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html> 

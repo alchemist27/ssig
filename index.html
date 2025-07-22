@@ -16,436 +16,265 @@
         <!-- 메인페이지 -->
         <div id="main" class="page active">
             <div class="container">
-                <section class="hero">
-                    <div class="hero-background">
-                        <div class="hero-pattern"></div>
-                        <div class="hero-gradient"></div>
-                        <div class="floating-elements">
-                            <div class="floating-cube floating-cube-1"></div>
-                            <div class="floating-cube floating-cube-2"></div>
-                            <div class="floating-cube floating-cube-3"></div>
-                            <div class="floating-circle floating-circle-1"></div>
-                            <div class="floating-circle floating-circle-2"></div>
-                            <div class="floating-circle floating-circle-3"></div>
-                        </div>
+                <!-- 새로운 프로젝트 섹션 -->
+                <section class="dashboard-section new-project-section">
+                    <div class="section-header">
+                        <h2>새로운 프로젝트</h2>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            <span>프로젝트 생성</span>
+                        </button>
                     </div>
-                    <div class="hero-content">
-                        <div class="hero-badge">
-                            <span class="badge-icon">✨</span>
-                            <span>씨익 미소짓게 만드는 3D PlayGround</span>
-                        </div>
-                        <h2>더 쉽고 직관적인<br><span class="highlight-text">3D 플랫폼</span>의 시작</h2>
-                        <p>디자이너와 시공업체, 사용자가 함께 만드는<br>새로운 3D 공간을 경험해보세요</p>
-                        <div class="hero-buttons">
-                            <button class="btn btn-outline btn-large" onclick="showPage('product')">
-                                <span>상품 둘러보기</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                            <button class="btn btn-primary btn-large" onclick="showPage('3d')">
-                                <span>3D 라이브러리</span>
-                                <i class="fas fa-cube"></i>
-                            </button>
-                        </div>
-                        <div class="hero-stats">
-                            <div class="stat-item">
-                                <div class="stat-number" data-number="1000">
-                                    <span class="stat-count">0</span><span class="stat-suffix">+</span>
-                                </div>
-                                <div class="stat-label">3D 모델</div>
+                    <div class="project-grid">
+                        <div class="project-card new-project-card">
+                            <div class="project-placeholder">
+                                <i class="fas fa-plus"></i>
+                                <h3>새 프로젝트 시작</h3>
+                                <p>아이디어를 현실로 만들어보세요</p>
                             </div>
-                            <div class="stat-item">
-                                <div class="stat-number" data-number="500">
-                                    <span class="stat-count">0</span><span class="stat-suffix">+</span>
+                        </div>
+                        <div class="project-templates">
+                            <div class="template-card">
+                                <div class="template-icon">
+                                    <i class="fas fa-home"></i>
                                 </div>
-                                <div class="stat-label">디자이너</div>
+                                <h4>주거 공간</h4>
+                                <p>아파트, 주택 설계</p>
                             </div>
-                            <div class="stat-item">
-                                <div class="stat-number" data-number="50">
-                                    <span class="stat-count">0</span><span class="stat-suffix">+</span>
+                            <div class="template-card">
+                                <div class="template-icon">
+                                    <i class="fas fa-building"></i>
                                 </div>
-                                <div class="stat-label">파트너사</div>
+                                <h4>상업 공간</h4>
+                                <p>사무실, 매장 설계</p>
+                            </div>
+                            <div class="template-card">
+                                <div class="template-icon">
+                                    <i class="fas fa-couch"></i>
+                                </div>
+                                <h4>인테리어</h4>
+                                <p>가구 배치, 디자인</p>
                             </div>
                         </div>
                     </div>
                 </section>
-                
-                <!-- 모바일 친구목록 (스와이프 기능 예정) -->
-                <section class="friends-section mobile-only">
-                    <h3>친구 목록</h3>
-                    <div class="friends-list">
-                        <div class="friend-item">
-                            <div class="friend-avatar"></div>
-                            <span>친구 1</span>
-                        </div>
-                        <div class="friend-item">
-                            <div class="friend-avatar"></div>
-                            <span>친구 2</span>
-                        </div>
-                    </div>
-                </section>
-                
-                <!-- 주요 기능 소개 -->
-                <section class="features">
-                    <div class="feature-grid">
-                        <div class="feature-card" onclick="showPage('product')">
-                            <i class="fas fa-shopping-bag"></i>
-                            <h3>상품 거래</h3>
-                            <p>거리순 정렬과 3D 라이브러리 연동</p>
-                        </div>
-                        <div class="feature-card" onclick="showPage('3d')">
-                            <i class="fas fa-cube"></i>
-                            <h3>3D 라이브러리</h3>
-                            <p>전체 모델링 디자인 뷰어</p>
-                        </div>
-                        <div class="feature-card" onclick="showPage('modeling')">
-                            <i class="fas fa-drafting-compass"></i>
-                            <h3>모델링</h3>
-                            <p>엑셀 형태의 견적 편집</p>
-                        </div>
-                        <div class="feature-card" onclick="showPage('map')">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <h3>와이드맵</h3>
-                            <p>주소/거리 기반 업체 검색</p>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
 
-
-
-        <!-- 상품페이지 -->
-        <div id="product" class="page">
-            <div class="container">
-                <div class="page-header">
-                    <h2>상품</h2>
-                    <div class="page-controls">
-                        <select class="sort-select">
-                            <option value="distance">거리순</option>
-                            <option value="price">가격순</option>
-                            <option value="latest">최신순</option>
-                        </select>
-                        <button class="btn btn-primary">상품 등록</button>
+                <!-- 진행중 프로젝트 섹션 -->
+                <section class="dashboard-section ongoing-project-section">
+                    <div class="section-header">
+                        <h2>진행중 프로젝트</h2>
+                        <button class="btn btn-outline">
+                            <span>전체 보기</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
-                </div>
-                <div class="product-grid">
-                    <div class="product-card">
-                        <div class="product-image"></div>
-                        <div class="product-info">
-                            <h3>상품명</h3>
-                            <p class="price">가격</p>
-                            <p class="distance">거리: 1km</p>
-                        </div>
-                    </div>
-                    <!-- 더 많은 상품 카드들... -->
-                </div>
-            </div>
-        </div>
-
-        <!-- 지브로3D 페이지 -->
-        <div id="3d" class="page">
-            <div class="container">
-                <div class="page-header">
-                    <h2>지브로3D 라이브러리</h2>
-                    <div class="page-controls">
-                        <input type="text" placeholder="검색..." class="search-input">
-                        <select class="filter-select">
-                            <option value="all">전체</option>
-                            <option value="furniture">가구</option>
-                            <option value="decoration">장식품</option>
-                        </select>
-                        <button class="btn btn-outline">뷰 모드</button>
-                    </div>
-                </div>
-                <div class="model-viewer">
-                    <div class="viewer-container">
-                        <p>3D 모델 뷰어 영역</p>
-                    </div>
-                </div>
-                <div class="model-grid">
-                    <div class="model-card">
-                        <div class="model-thumbnail"></div>
-                        <div class="model-info">
-                            <h3>모델명</h3>
-                            <p>카테고리</p>
-                        </div>
-                    </div>
-                    <!-- 더 많은 모델 카드들... -->
-                </div>
-            </div>
-        </div>
-
-        <!-- 모델링 페이지 -->
-        <div id="modeling" class="page">
-            <div class="container">
-                <div class="page-header">
-                    <h2>모델링 견적</h2>
-                    <div class="page-controls">
-                        <button class="btn btn-outline">불러오기</button>
-                        <button class="btn btn-primary">내보내기</button>
-                    </div>
-                </div>
-                <div class="modeling-editor">
-                    <div class="editor-toolbar">
-                        <button class="btn btn-icon"><i class="fas fa-plus"></i></button>
-                        <button class="btn btn-icon"><i class="fas fa-minus"></i></button>
-                        <button class="btn btn-icon"><i class="fas fa-copy"></i></button>
-                    </div>
-                    <div class="editor-table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>항목</th>
-                                    <th>수량</th>
-                                    <th>단가</th>
-                                    <th>금액</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>샘플 항목</td>
-                                    <td>1</td>
-                                    <td>10,000</td>
-                                    <td>10,000</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 와이드맵 페이지 -->
-        <div id="map" class="page">
-            <div class="container">
-                <div class="page-header">
-                    <h2>와이드맵</h2>
-                    <div class="page-controls">
-                        <input type="text" placeholder="주소 또는 업체명 검색..." class="search-input">
-                        <button class="btn btn-primary">검색</button>
-                    </div>
-                </div>
-                <div class="map-container">
-                    <div class="map-viewer">
-                        <p>구글맵 API 연동 예정</p>
-                    </div>
-                    <div class="map-sidebar">
-                        <div class="search-results">
-                            <div class="result-item">
-                                <h4>업체명</h4>
-                                <p>주소</p>
-                                <p>거리: 500m</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- AI 테스트 페이지 -->
-        <div id="ai" class="page">
-            <div class="container">
-                <div class="page-header">
-                    <h2>AI 테스트</h2>
-                </div>
-                <div class="ai-content">
-                    <p>기존 HTML 파일을 React 컴포넌트로 마이그레이션 예정</p>
-                    <div class="ai-tools">
-                        <div class="tool-card">
-                            <h3>AI 도구 1</h3>
-                            <p>설명</p>
-                            <button class="btn btn-primary">사용하기</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 마이페이지 -->
-        <div id="mypage" class="page">
-            <div class="container">
-                <div class="page-header">
-                    <h2>마이페이지</h2>
-                </div>
-                <div class="mypage-content">
-                    <div class="profile-section">
-                        <div class="profile-info">
-                            <div class="profile-avatar"></div>
-                            <div class="profile-details">
-                                <h3>사용자명</h3>
-                                <p>회원 구분: 일반</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mypage-menu">
-                        <div class="menu-item">
-                            <h4>주문내역</h4>
-                            <p>최근 주문 내역을 확인하세요</p>
-                        </div>
-                        <div class="menu-item">
-                            <h4>등록상품</h4>
-                            <p>내가 등록한 상품들</p>
-                        </div>
-                        <div class="menu-item">
-                            <h4>수익정보</h4>
-                            <p>수익 및 정산 내역</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 포트폴리오 페이지 -->
-        <div id="portfolio" class="page">
-            <div class="container">
-                <div class="page-header">
-                    <h2>포트폴리오</h2>
-                    <div class="page-controls">
-                        <button class="btn btn-primary">프로젝트 업로드</button>
-                    </div>
-                </div>
-                <div class="portfolio-content">
-                    <div class="portfolio-grid">
-                        <div class="portfolio-card">
-                            <div class="portfolio-image"></div>
-                            <div class="portfolio-info">
-                                <h3>프로젝트명</h3>
-                                <p>설명</p>
-                                <div class="portfolio-tags">
-                                    <span class="tag">태그1</span>
-                                    <span class="tag">태그2</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 쪽지/친구/구독 관리 페이지 -->
-        <div id="messages" class="page">
-            <div class="container">
-                <div class="page-header">
-                    <h2>메시지</h2>
-                </div>
-                <div class="messages-layout">
-                    <div class="messages-sidebar">
-                        <div class="message-tabs">
-                            <button class="tab active" onclick="showMessageTab('messages')">쪽지</button>
-                            <button class="tab" onclick="showMessageTab('friends')">친구</button>
-                            <button class="tab" onclick="showMessageTab('subscriptions')">구독</button>
-                        </div>
-                    </div>
-                    <div class="messages-content">
-                        <div id="messagesTab" class="tab-content active">
-                            <div class="message-list">
-                                <div class="message-item">
-                                    <div class="message-avatar"></div>
-                                    <div class="message-info">
-                                        <h4>발신자</h4>
-                                        <p>메시지 내용...</p>
-                                        <span class="message-time">2시간 전</span>
+                    <div class="project-grid">
+                        <div class="project-card ongoing-project">
+                            <div class="project-thumbnail">
+                                <div class="project-progress">
+                                    <span class="progress-text">75%</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 75%"></div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="friendsTab" class="tab-content">
-                            <div class="friends-list">
-                                <div class="friend-item">
-                                    <div class="friend-avatar"></div>
-                                    <div class="friend-info">
-                                        <h4>친구명</h4>
-                                        <p>상태 메시지</p>
-                                    </div>
+                            <div class="project-info">
+                                <h3>아파트 리모델링</h3>
+                                <p class="project-status">설계 진행중</p>
+                                <div class="project-meta">
+                                    <span class="project-date">2024.01.15 시작</span>
+                                    <span class="project-team">팀원 3명</span>
                                 </div>
                             </div>
                         </div>
-                        <div id="subscriptionsTab" class="tab-content">
-                            <div class="subscription-list">
-                                <div class="subscription-item">
-                                    <div class="subscription-avatar"></div>
-                                    <div class="subscription-info">
-                                        <h4>구독 대상</h4>
-                                        <p>최근 활동</p>
+                        <div class="project-card ongoing-project">
+                            <div class="project-thumbnail">
+                                <div class="project-progress">
+                                    <span class="progress-text">40%</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 40%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>카페 인테리어</h3>
+                                <p class="project-status">3D 모델링</p>
+                                <div class="project-meta">
+                                    <span class="project-date">2024.01.10 시작</span>
+                                    <span class="project-team">팀원 2명</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card ongoing-project">
+                            <div class="project-thumbnail">
+                                <div class="project-progress">
+                                    <span class="progress-text">90%</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>오피스 설계</h3>
+                                <p class="project-status">최종 검토</p>
+                                <div class="project-meta">
+                                    <span class="project-date">2023.12.20 시작</span>
+                                    <span class="project-team">팀원 5명</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 상품 섹션 -->
+                <section class="dashboard-section product-section">
+                    <div class="section-header">
+                        <h2>상품</h2>
+                        <a href="product.html" class="btn btn-outline">
+                            <span>상품 페이지로</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <div class="product-preview">
+                        <div class="product-categories">
+                            <div class="category-card">
+                                <div class="category-icon">
+                                    <i class="fas fa-chair"></i>
+                                </div>
+                                <h4>가구</h4>
+                                <p class="category-count">1,234개</p>
+                            </div>
+                            <div class="category-card">
+                                <div class="category-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h4>조명</h4>
+                                <p class="category-count">567개</p>
+                            </div>
+                            <div class="category-card">
+                                <div class="category-icon">
+                                    <i class="fas fa-paint-brush"></i>
+                                </div>
+                                <h4>마감재</h4>
+                                <p class="category-count">890개</p>
+                            </div>
+                            <div class="category-card">
+                                <div class="category-icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <h4>식물</h4>
+                                <p class="category-count">345개</p>
+                            </div>
+                        </div>
+                        <div class="featured-products">
+                            <h4>인기 상품</h4>
+                            <div class="product-list">
+                                <div class="product-item">
+                                    <div class="product-image"></div>
+                                    <div class="product-details">
+                                        <h5>모던 소파</h5>
+                                        <p class="product-price">₩1,200,000</p>
+                                    </div>
+                                </div>
+                                <div class="product-item">
+                                    <div class="product-image"></div>
+                                    <div class="product-details">
+                                        <h5>LED 조명</h5>
+                                        <p class="product-price">₩150,000</p>
+                                    </div>
+                                </div>
+                                <div class="product-item">
+                                    <div class="product-image"></div>
+                                    <div class="product-details">
+                                        <h5>원목 테이블</h5>
+                                        <p class="product-price">₩800,000</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
+
+                <!-- 라이브러리 섹션 -->
+                <section class="dashboard-section library-section">
+                    <div class="section-header">
+                        <h2>3D 라이브러리</h2>
+                        <a href="3d-library.html" class="btn btn-outline">
+                            <span>라이브러리로</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <div class="library-preview">
+                        <div class="library-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-cube"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4>1,000+</h4>
+                                    <p>3D 모델</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4>50,000+</h4>
+                                    <p>다운로드</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4>500+</h4>
+                                    <p>디자이너</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="library-models">
+                            <h4>최신 모델</h4>
+                            <div class="model-grid">
+                                <div class="model-card">
+                                    <div class="model-thumbnail"></div>
+                                    <div class="model-info">
+                                        <h5>현대적 의자</h5>
+                                        <p class="model-category">가구</p>
+                                    </div>
+                                </div>
+                                <div class="model-card">
+                                    <div class="model-thumbnail"></div>
+                                    <div class="model-info">
+                                        <h5>펜던트 조명</h5>
+                                        <p class="model-category">조명</p>
+                                    </div>
+                                </div>
+                                <div class="model-card">
+                                    <div class="model-thumbnail"></div>
+                                    <div class="model-info">
+                                        <h5>식물</h5>
+                                        <p class="model-category">장식</p>
+                                    </div>
+                                </div>
+                                <div class="model-card">
+                                    <div class="model-thumbnail"></div>
+                                    <div class="model-info">
+                                        <h5>책상</h5>
+                                        <p class="model-category">가구</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
 
-        <!-- 관리자 페이지 -->
-        <div id="admin" class="page">
-            <div class="container">
-                <div class="page-header">
-                    <h2>관리자 페이지</h2>
-                </div>
-                <div class="admin-dashboard">
-                    <div class="admin-menu">
-                        <div class="admin-menu-item" onclick="showAdminTab('products')">
-                            <i class="fas fa-box"></i>
-                            <span>상품 관리</span>
-                        </div>
-                        <div class="admin-menu-item" onclick="showAdminTab('projects')">
-                            <i class="fas fa-project-diagram"></i>
-                            <span>프로젝트 관리</span>
-                        </div>
-                        <div class="admin-menu-item" onclick="showAdminTab('library')">
-                            <i class="fas fa-database"></i>
-                            <span>라이브러리 관리</span>
-                        </div>
-                        <div class="admin-menu-item" onclick="showAdminTab('categories')">
-                            <i class="fas fa-tags"></i>
-                            <span>카테고리 관리</span>
-                        </div>
-                        <div class="admin-menu-item" onclick="showAdminTab('ads')">
-                            <i class="fas fa-ad"></i>
-                            <span>광고 관리</span>
-                        </div>
-                        <div class="admin-menu-item" onclick="showAdminTab('payments')">
-                            <i class="fas fa-credit-card"></i>
-                            <span>결제 내역</span>
-                        </div>
-                        <div class="admin-menu-item" onclick="showAdminTab('members')">
-                            <i class="fas fa-users"></i>
-                            <span>회원 관리</span>
-                        </div>
-                    </div>
-                    <div class="admin-content">
-                        <div id="adminProducts" class="admin-tab-content active">
-                            <h3>상품 관리</h3>
-                            <p>라이브러리 연결 유무 구분 및 상품 관리</p>
-                        </div>
-                        <div id="adminProjects" class="admin-tab-content">
-                            <h3>프로젝트 관리</h3>
-                            <p>진행율, 클라이언트 확인 등 프로젝트 워크플로우 관리</p>
-                        </div>
-                        <div id="adminLibrary" class="admin-tab-content">
-                            <h3>라이브러리 관리</h3>
-                            <p>상품 연결 여부 구분</p>
-                        </div>
-                        <div id="adminCategories" class="admin-tab-content">
-                            <h3>카테고리 관리</h3>
-                            <p>모델링과 상품 카테고리 통일</p>
-                        </div>
-                        <div id="adminAds" class="admin-tab-content">
-                            <h3>광고 관리</h3>
-                            <p>배너, 스폰서 콘텐츠, 위치 지정</p>
-                        </div>
-                        <div id="adminPayments" class="admin-tab-content">
-                            <h3>결제 내역</h3>
-                            <p>결제 상태, 수익 정산 추적</p>
-                        </div>
-                        <div id="adminMembers" class="admin-tab-content">
-                            <h3>회원 관리</h3>
-                            <p>회원별 커미션 정보 관리</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
+
     </main>
 
     <!-- 푸터 컨테이너 -->
