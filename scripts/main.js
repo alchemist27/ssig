@@ -34,12 +34,16 @@ function showPage(pageId) {
     // 페이지별 특별 처리
     switch(pageId) {
         case 'login':
-            // 로그인 페이지로 리다이렉트
-            window.location.href = 'login.html';
+            // 로그인 페이지로 리다이렉트 (이미 login.html에 있는 경우 제외)
+            if (!window.location.pathname.includes('login.html')) {
+                window.location.href = 'login.html';
+            }
             return;
         case 'signup':
-            // 회원가입 페이지로 리다이렉트
-            window.location.href = 'signup.html';
+            // 회원가입 페이지로 리다이렉트 (이미 signup.html에 있는 경우 제외)
+            if (!window.location.pathname.includes('signup.html')) {
+                window.location.href = 'signup.html';
+            }
             return;
         case 'admin':
         case 'mypage':
@@ -336,6 +340,18 @@ document.addEventListener('DOMContentLoaded', async function() {
     // 공통 컴포넌트 로드
     await loadComponent('header-container', 'components/header.html');
     await loadComponent('footer-container', 'components/footer.html');
+    
+    // 헤더 로딩 후 로그인 버튼 이벤트 수정
+    setTimeout(() => {
+        const loginButtons = document.querySelectorAll('a[href="login.html"]');
+        loginButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                // 기본 동작 유지 - 새 페이지로 이동
+                // 추가적인 JavaScript 간섭 방지
+                e.stopPropagation();
+            });
+        });
+    }, 100);
     
     // 기본 페이지 표시
     showPage('main');
