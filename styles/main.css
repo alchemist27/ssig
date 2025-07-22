@@ -261,16 +261,21 @@ body {
     padding: 0 var(--container-padding);
 }
 
-/* 헤더 */
-.header {
-    background-color: #ffffff;
-    border-bottom: 1px solid #e5e8eb;
+/* 헤더 컨테이너 */
+#header-container {
     position: -webkit-sticky; /* Safari 지원 */
     position: sticky;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
+    width: 100%;
+}
+
+/* 헤더 */
+.header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e8eb;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -2200,7 +2205,7 @@ body {
         --font-size-3xl: 28px;
     }
     
-    .header {
+    #header-container {
         position: -webkit-sticky !important; /* Safari 지원 */
         position: sticky !important;
         top: 0 !important;
@@ -2208,6 +2213,10 @@ body {
         right: 0;
         z-index: 1001 !important;
         width: 100% !important;
+    }
+    
+    .header {
+        position: relative;
     }
     
     .nav-desktop {

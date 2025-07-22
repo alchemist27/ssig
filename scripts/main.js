@@ -324,14 +324,15 @@ function initScrollAnimations() {
 // 헤더 스크롤 효과
 function handleHeaderScroll() {
     const header = document.querySelector('.header');
-    if (!header) return;
+    const headerContainer = document.getElementById('header-container');
+    if (!header || !headerContainer) return;
     
     const scrollY = window.scrollY;
     
-    // 헤더 스티키 위치 강제 설정 (CSS가 덮어씌워진 경우 대비)
-    header.style.position = 'sticky';
-    header.style.top = '0';
-    header.style.zIndex = '1001';
+    // 헤더 컨테이너 스티키 위치 강제 설정 (CSS가 덮어씌워진 경우 대비)
+    headerContainer.style.position = 'sticky';
+    headerContainer.style.top = '0';
+    headerContainer.style.zIndex = '1001';
     
     if (scrollY > 10) {
         header.style.backgroundColor = '#ffffff';
@@ -371,14 +372,14 @@ document.addEventListener('DOMContentLoaded', async function() {
         await loadComponent('header-container', 'components/header.html');
         await loadComponent('footer-container', 'components/footer.html');
         
-        // 헤더 스티키 설정 강화
+        // 헤더 컨테이너 스티키 설정 강화
         setTimeout(() => {
-            const header = document.querySelector('.header');
-            if (header) {
-                header.style.position = 'sticky';
-                header.style.top = '0';
-                header.style.zIndex = '1001';
-                header.style.width = '100%';
+            const headerContainer = document.getElementById('header-container');
+            if (headerContainer) {
+                headerContainer.style.position = 'sticky';
+                headerContainer.style.top = '0';
+                headerContainer.style.zIndex = '1001';
+                headerContainer.style.width = '100%';
             }
         }, 50);
         
