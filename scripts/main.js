@@ -344,10 +344,6 @@ function handleHeaderScroll() {
 
 // 메인 페이지 초기화 함수
 async function initMainPage() {
-    // 공통 컴포넌트 로드
-    await loadComponent('header-container', 'components/header.html');
-    await loadComponent('footer-container', 'components/footer.html');
-    
     // 헤더 로딩 후 로그인 버튼 이벤트 수정
     setTimeout(() => {
         const loginButtons = document.querySelectorAll('a[href="login.html"]');
@@ -366,6 +362,58 @@ async function initMainPage() {
 
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', async function() {
+    // 모든 페이지에서 헤더/푸터 로드
+    const headerContainer = document.getElementById('header-container');
+    const footerContainer = document.getElementById('footer-container');
+    
+    if (headerContainer && footerContainer) {
+        // 공통 컴포넌트 로드
+        await loadComponent('header-container', 'components/header.html');
+        await loadComponent('footer-container', 'components/footer.html');
+        
+        // 헤더 스티키 설정 강화
+        setTimeout(() => {
+            const header = document.querySelector('.header');
+            if (header) {
+                header.style.position = 'sticky';
+                header.style.top = '0';
+                header.style.zIndex = '1001';
+                header.style.width = '100%';
+            }
+        }, 50);
+        
+        // 헤더 스크롤 효과 이벤트 리스너 추가
+        window.addEventListener('scroll', handleHeaderScroll);
+        
+        // 초기 헤더 상태 설정
+        handleHeaderScroll();
+        
+        // 푸터 링크 수정 (SPA가 아닌 페이지에서)
+        if (!window.location.pathname.includes('index.html') && 
+            window.location.pathname !== '/' && 
+            !window.location.pathname.endsWith('/SSG/')) {
+            setTimeout(() => {
+                const footerLinks = document.querySelectorAll('.footer-links a[onclick]');
+                footerLinks.forEach(link => {
+                    const onclickValue = link.getAttribute('onclick');
+                    if (onclickValue) {
+                        // showPage('product') -> product.html
+                        const pageName = onclickValue.match(/showPage\('(.+?)'\)/);
+                        if (pageName && pageName[1]) {
+                            let fileName = pageName[1];
+                            // 특별한 경우 처리
+                            if (fileName === '3d') fileName = '3d-library';
+                            if (fileName === 'ai') fileName = 'ai-test';
+                            
+                            link.href = `${fileName}.html`;
+                            link.removeAttribute('onclick');
+                        }
+                    }
+                });
+            }, 100);
+        }
+    }
+    
     // index.html에서만 메인 페이지 초기화 실행
     if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/SSG/')) {
         await initMainPage();
