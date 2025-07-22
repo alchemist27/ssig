@@ -1,7 +1,5 @@
 // 페이지 시스템
 let currentPage = 'main';
-let isLoggedIn = false;
-let userType = 'general'; // general, designer, business
 
 // 페이지 표시 함수
 function showPage(pageId) {
@@ -36,17 +34,11 @@ function showPage(pageId) {
     // 페이지별 특별 처리
     switch(pageId) {
         case 'admin':
-            // 관리자 권한 확인 (실제로는 서버에서 확인)
-            if (!isLoggedIn) {
-                showPage('login');
-                return;
-            }
-            break;
         case 'mypage':
         case 'messages':
-            // 로그인 필요 페이지
-            if (!isLoggedIn) {
-                showPage('login');
+            // 로그인 필요 페이지 - 외부 auth.js의 isLoggedIn 확인
+            if (typeof isLoggedIn !== 'undefined' && !isLoggedIn) {
+                window.location.href = 'login.html';
                 return;
             }
             break;
@@ -79,122 +71,7 @@ function closeMobileMenu() {
     document.body.style.overflow = '';
 }
 
-// 회원가입 폼 표시
-function showSignupForm(type) {
-    const signupForm = document.getElementById('signupForm');
-    let formHTML = '';
-    
-    switch(type) {
-        case 'general':
-            formHTML = `
-                <div class="social-login">
-                    <button class="btn btn-social google">
-                        <i class="fab fa-google"></i>
-                        구글로 회원가입
-                    </button>
-                    <button class="btn btn-social kakao">
-                        <i class="fas fa-comment"></i>
-                        카카오로 회원가입
-                    </button>
-                    <button class="btn btn-social naver">
-                        <i class="fab fa-naver"></i>
-                        네이버로 회원가입
-                    </button>
-                </div>
-            `;
-            break;
-        case 'designer':
-            formHTML = `
-                <div class="social-login">
-                    <button class="btn btn-social google">
-                        <i class="fab fa-google"></i>
-                        구글로 회원가입
-                    </button>
-                    <button class="btn btn-social kakao">
-                        <i class="fas fa-comment"></i>
-                        카카오로 회원가입
-                    </button>
-                    <button class="btn btn-social naver">
-                        <i class="fab fa-naver"></i>
-                        네이버로 회원가입
-                    </button>
-                </div>
-                <div class="form-group">
-                    <label>포트폴리오 URL</label>
-                    <input type="url" placeholder="포트폴리오 URL을 입력하세요">
-                </div>
-                <div class="form-group">
-                    <label>전문 분야</label>
-                    <select>
-                        <option>3D 모델링</option>
-                        <option>인테리어 디자인</option>
-                        <option>제품 디자인</option>
-                    </select>
-                </div>
-            `;
-            break;
-        case 'business':
-            formHTML = `
-                <div class="social-login">
-                    <button class="btn btn-social google">
-                        <i class="fab fa-google"></i>
-                        구글로 회원가입
-                    </button>
-                    <button class="btn btn-social kakao">
-                        <i class="fas fa-comment"></i>
-                        카카오로 회원가입
-                    </button>
-                    <button class="btn btn-social naver">
-                        <i class="fab fa-naver"></i>
-                        네이버로 회원가입
-                    </button>
-                </div>
-                <div class="form-group">
-                    <label>사업자 등록번호</label>
-                    <input type="text" placeholder="사업자 등록번호를 입력하세요">
-                </div>
-                <div class="form-group">
-                    <label>업체명</label>
-                    <input type="text" placeholder="업체명을 입력하세요">
-                </div>
-                <div class="form-group">
-                    <label>업체 주소</label>
-                    <input type="text" placeholder="업체 주소를 입력하세요">
-                </div>
-            `;
-            break;
-    }
-    
-    signupForm.innerHTML = formHTML;
-    signupForm.style.display = 'block';
-}
 
-// 로그인 처리 (임시)
-function login() {
-    isLoggedIn = true;
-    updateAuthUI();
-}
-
-// 로그아웃 처리
-function logout() {
-    isLoggedIn = false;
-    updateAuthUI();
-    showPage('main');
-}
-
-// 인증 UI 업데이트
-function updateAuthUI() {
-    const authButtons = document.getElementById('authButtons');
-    const userInfo = document.getElementById('userInfo');
-    
-    if (isLoggedIn) {
-        authButtons.style.display = 'none';
-        userInfo.style.display = 'flex';
-    } else {
-        authButtons.style.display = 'flex';
-        userInfo.style.display = 'none';
-    }
-}
 
 // 메시지 탭 전환
 function showMessageTab(tabName) {
@@ -255,8 +132,8 @@ function filterModels(category) {
 
 // 상품 등록
 function registerProduct() {
-    if (!isLoggedIn) {
-        showPage('login');
+    if (typeof isLoggedIn !== 'undefined' && !isLoggedIn) {
+        window.location.href = 'login.html';
         return;
     }
     
@@ -266,8 +143,8 @@ function registerProduct() {
 
 // 프로젝트 업로드
 function uploadProject() {
-    if (!isLoggedIn) {
-        showPage('login');
+    if (typeof isLoggedIn !== 'undefined' && !isLoggedIn) {
+        window.location.href = 'login.html';
         return;
     }
     
@@ -497,8 +374,10 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     });
     
-    // 초기 인증 상태 설정
-    updateAuthUI();
+    // 인증 상태 업데이트 (auth.js가 로드된 경우에만)
+    if (typeof updateAuthUI === 'function') {
+        updateAuthUI();
+    }
 });
 
 // 윈도우 리사이즈 이벤트

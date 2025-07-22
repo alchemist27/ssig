@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - 씨익 웹플랫폼</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 헤더 컨테이너 -->
+    <div id="header-container"></div>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+        <!-- 로그인 페이지 -->
+        <div id="login" class="page active">
+            <div class="container">
+                <div class="auth-container">
+                    <h2>로그인</h2>
+                    <div class="social-login">
+                        <button class="btn btn-social google">
+                            <i class="fab fa-google"></i>
+                            구글로 로그인
+                        </button>
+                        <button class="btn btn-social kakao">
+                            <i class="fas fa-comment"></i>
+                            카카오로 로그인
+                        </button>
+                        <button class="btn btn-social naver">
+                            <i class="fab fa-naver"></i>
+                            네이버로 로그인
+                        </button>
+                    </div>
+                    <p class="auth-link">
+                        계정이 없으신가요? <a href="signup.html">회원가입</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 푸터 컨테이너 -->
+    <div id="footer-container"></div>
+
+    <script src="scripts/auth.js"></script>
+</body>
+</html> 
