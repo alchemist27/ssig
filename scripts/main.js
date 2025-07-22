@@ -62,6 +62,8 @@ function toggleMobileMenu() {
     const mobileNav = document.getElementById('mobileNav');
     const toggleButton = document.querySelector('.mobile-menu-toggle');
     
+    if (!mobileNav || !toggleButton) return;
+    
     mobileNav.classList.toggle('active');
     toggleButton.classList.toggle('active');
     
@@ -77,6 +79,8 @@ function toggleMobileMenu() {
 function closeMobileMenu() {
     const mobileNav = document.getElementById('mobileNav');
     const toggleButton = document.querySelector('.mobile-menu-toggle');
+    
+    if (!mobileNav || !toggleButton) return;
     
     mobileNav.classList.remove('active');
     toggleButton.classList.remove('active');
@@ -471,7 +475,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         const mobileNav = document.getElementById('mobileNav');
         const menuToggle = document.querySelector('.mobile-menu-toggle');
         
-        if (!mobileNav.contains(e.target) && !menuToggle.contains(e.target)) {
+        // 요소가 존재할 때만 contains 메서드 호출
+        if (mobileNav && menuToggle && !mobileNav.contains(e.target) && !menuToggle.contains(e.target)) {
             closeMobileMenu();
         }
     });
