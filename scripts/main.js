@@ -334,10 +334,10 @@ function handleHeaderScroll() {
     header.style.zIndex = '1001';
     
     if (scrollY > 10) {
-        header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+        header.style.backgroundColor = '#ffffff';
         header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
     } else {
-        header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+        header.style.backgroundColor = '#ffffff';
         header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
     }
 }

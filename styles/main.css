@@ -118,7 +118,7 @@ body {
 
 /* 푸터 */
 .footer {
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     border-top: 1px solid #e5e8eb;
     margin-top: 80px;
 }
@@ -263,7 +263,7 @@ body {
 
 /* 헤더 */
 .header {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: #ffffff;
     border-bottom: 1px solid #e5e8eb;
     position: -webkit-sticky; /* Safari 지원 */
     position: sticky;
