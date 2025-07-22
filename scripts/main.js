@@ -335,8 +335,8 @@ function handleHeaderScroll() {
     }
 }
 
-// 페이지 로드 시 초기화
-document.addEventListener('DOMContentLoaded', async function() {
+// 메인 페이지 초기화 함수
+async function initMainPage() {
     // 공통 컴포넌트 로드
     await loadComponent('header-container', 'components/header.html');
     await loadComponent('footer-container', 'components/footer.html');
@@ -355,6 +355,14 @@ document.addEventListener('DOMContentLoaded', async function() {
     
     // 기본 페이지 표시
     showPage('main');
+}
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', async function() {
+    // index.html에서만 메인 페이지 초기화 실행
+    if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/SSG/')) {
+        await initMainPage();
+    }
     
     // 스크롤 애니메이션 초기화
     setTimeout(() => {

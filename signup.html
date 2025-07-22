@@ -36,6 +36,42 @@
     <!-- 푸터 컨테이너 -->
     <div id="footer-container"></div>
 
+    <script src="scripts/main.js"></script>
     <script src="scripts/auth.js"></script>
+    <script>
+        // 회원가입 페이지 전용 초기화
+        document.addEventListener('DOMContentLoaded', async function() {
+            // 공통 컴포넌트 로드
+            await loadComponent('header-container', 'components/header.html');
+            await loadComponent('footer-container', 'components/footer.html');
+            
+            // 헤더 스크롤 효과 이벤트 리스너 추가
+            window.addEventListener('scroll', handleHeaderScroll);
+            
+            // 초기 헤더 상태 설정
+            handleHeaderScroll();
+            
+            // 푸터 링크 수정 (SPA 링크를 직접 링크로 변경)
+            setTimeout(() => {
+                const footerLinks = document.querySelectorAll('.footer-links a[onclick]');
+                footerLinks.forEach(link => {
+                    const onclickValue = link.getAttribute('onclick');
+                    if (onclickValue) {
+                        // showPage('product') -> product.html
+                        const pageName = onclickValue.match(/showPage\('(.+?)'\)/);
+                        if (pageName && pageName[1]) {
+                            let fileName = pageName[1];
+                            // 특별한 경우 처리
+                            if (fileName === '3d') fileName = '3d-library';
+                            if (fileName === 'ai') fileName = 'ai-test';
+                            
+                            link.href = `${fileName}.html`;
+                            link.removeAttribute('onclick');
+                        }
+                    }
+                });
+            }, 100);
+        });
+    </script>
 </body>
 </html> 
